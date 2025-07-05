@@ -1,119 +1,44 @@
-import Image from "next/image";
+"use client";
+import HeroSlider from "@/components/HeroSlider";
+import WhyChooseUs from "@/components/WhyChooseUs";
+import Testimonials from "@/components/Testimonials";
+import WhySriLanka from "@/components/WhySriLanka";
+import CustomizeTour from "@/components/CustomizeTour";
+import HowItWorks from "@/components/HowItWorks";
+import AboutUs from "@/components/AboutUs";
+import ContactUs from "@/components/ContactUs";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-between bg-gradient-to-b from-blue-100 to-white p-0">
-      <header className="w-full flex flex-col items-center py-10 bg-white/80 shadow-md">
-        <Image
-          src="/odyssey-logo.svg"
-          alt="Odyssey Sri Lanka Logo"
-          width={120}
-          height={120}
-          className="mb-4"
-        />
-        <h1 className="text-4xl sm:text-5xl font-bold text-blue-900 mb-2 text-center drop-shadow">
-          Odyssey Sri Lanka
-        </h1>
-        <p className="text-lg sm:text-xl text-blue-700 text-center max-w-2xl">
-          Discover the beauty, culture, and adventure of Sri Lanka with curated
-          travel experiences and expert guides.
-        </p>
-      </header>
-      <main className="flex-1 w-full flex flex-col items-center justify-center px-4 py-12 gap-10">
-        <section className="max-w-3xl w-full flex flex-col items-center gap-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-blue-800 text-center">
-            Why Travel with Odyssey?
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full">
-            <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
-              <Image
-                src="/beach.svg"
-                alt="Beaches"
-                width={48}
-                height={48}
-              />
-              <h3 className="font-bold text-blue-700 mt-4 mb-2">
-                Stunning Beaches
-              </h3>
-              <p className="text-gray-600 text-center text-sm">
-                Relax on pristine beaches and enjoy the tropical paradise of
-                Sri Lanka’s coastline.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
-              <Image
-                src="/temple.svg"
-                alt="Culture"
-                width={48}
-                height={48}
-              />
-              <h3 className="font-bold text-blue-700 mt-4 mb-2">
-                Rich Culture
-              </h3>
-              <p className="text-gray-600 text-center text-sm">
-                Explore ancient temples, vibrant festivals, and the unique
-                heritage of the island.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg shadow p-6 flex flex-col items-center">
-              <Image
-                src="/adventure.svg"
-                alt="Adventure"
-                width={48}
-                height={48}
-              />
-              <h3 className="font-bold text-blue-700 mt-4 mb-2">
-                Adventure Awaits
-              </h3>
-              <p className="text-gray-600 text-center text-sm">
-                From hiking lush mountains to wildlife safaris, adventure is
-                around every corner.
-              </p>
-            </div>
+    <div className="min-h-screen bg-[#d3d2c7] flex flex-col items-center justify-center py-6 px-2">
+      <div className="w-full max-w-6xl rounded-3xl bg-white/90 shadow-xl p-6 sm:p-10 flex flex-col gap-10">
+        <section id="hero" className="flex flex-col gap-8">
+          <HeroSlider />
+          <div className="flex flex-col items-center gap-2">
+            <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 text-center">
+              Your Personalized Sri Lanka Vacation Awaits
+            </h1>
+            <p className="text-lg sm:text-2xl text-gray-800 text-center">
+              All-Inclusive Travel Tailored to You, No Hidden Costs
+            </p>
+            <p className="text-base text-gray-700 text-center max-w-2xl mt-2">
+              All-inclusive pricing covers flights, accommodations, meals, and guided tours.
+            </p>
+            <a href="#customize" className="mt-4 px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-bold text-lg shadow">
+              Start Customizing
+            </a>
           </div>
         </section>
-        <section className="w-full flex flex-col items-center gap-4">
-          <h2 className="text-xl sm:text-2xl font-semibold text-blue-800">
-            Plan Your Journey
-          </h2>
-          <a
-            href="#contact"
-            className="bg-blue-700 hover:bg-blue-800 text-white font-semibold px-8 py-3 rounded-full shadow transition"
-          >
-            Contact Us
-          </a>
-        </section>
-      </main>
-      <footer className="w-full py-6 flex flex-col items-center bg-blue-900 text-white text-sm gap-2">
-        <span>
-          &copy; {new Date().getFullYear()} Odyssey Sri Lanka. All rights
-          reserved.
-        </span>
-        <div className="flex gap-4">
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Instagram
-          </a>
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Facebook
-          </a>
-          <a
-            href="mailto:info@odysseysrilanka.com"
-            className="hover:underline"
-          >
-            Email
-          </a>
-        </div>
-      </footer>
+        <WhyChooseUs />
+        <Testimonials />
+        <WhySriLanka />
+        <CustomizeTour />
+        <HowItWorks />
+        <AboutUs />
+        <ContactUs />
+        <Footer />
+      </div>
     </div>
   );
 }

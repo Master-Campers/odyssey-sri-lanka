@@ -1,0 +1,80 @@
+"use client";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
+const HERO_IMAGES = [
+    { src: "/image-1.jpg", alt: "Sri Lanka Beach" },
+    { src: "/image-2.jpg", alt: "Sri Lanka Temple" },
+    { src: "/image-3.jpg", alt: "Sri Lanka Wildlife" },
+    { src: "/image-4.jpg", alt: "Sri Lanka Tea Plantation" },
+];
+
+export default function HeroSlider() {
+    const [index, setIndex] = useState(0);
+    const [fade, setFade] = useState(false);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const [showNav, setShowNav] = useState(false);
+
+    useEffect(() => {
+        timeoutRef.current = setTimeout(() => {
+            setFade(true);
+            setTimeout(() => {
+                setIndex((i) => (i + 1) % HERO_IMAGES.length);
+                setFade(false);
+            }, 600);
+        }, 10000);
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, [index]);
+
+    const goTo = (dir: number) => {
+        setFade(true);
+        setTimeout(() => {
+            setIndex((i) => (i + dir + HERO_IMAGES.length) % HERO_IMAGES.length);
+            setFade(false);
+        }, 600);
+    };
+
+    return (
+        <div
+            className="relative rounded-2xl overflow-hidden w-full h-[480px] sm:h-[600px] flex items-center justify-center bg-gray-200 group"
+            onMouseEnter={() => setShowNav(true)}
+            onMouseLeave={() => setShowNav(false)}
+        >
+            <Image
+                src={HERO_IMAGES[index].src}
+                alt={HERO_IMAGES[index].alt}
+                fill
+                className={`object-cover ${fade ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}
+                priority
+                quality={100}
+                sizes="(min-width: 1024px) 1200px, 100vw"
+            />
+            {/* Nav Buttons */}
+            <button
+                className={`absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-2xl rounded-full p-2 shadow transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+                onClick={() => goTo(-1)}
+                aria-label="Previous image"
+            >
+                ‹
+            </button>
+            <button
+                className={`absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-2xl rounded-full p-2 shadow transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+                onClick={() => goTo(1)}
+                aria-label="Next image"
+            >
+                ›
+            </button>
+            {/* Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {HERO_IMAGES.map((_, i) => (
+                    <span
+                        key={i}
+                        className={`w-2 h-2 rounded-full ${i === index ? "bg-green-600" : "bg-white/60"}`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+}
