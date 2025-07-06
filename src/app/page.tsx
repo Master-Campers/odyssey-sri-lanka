@@ -1,6 +1,7 @@
 "use client";
 import HeroSlider from "@/components/HeroSlider";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import PopularDestinations from "@/components/PopularDestinations";
 import Testimonials from "@/components/Testimonials";
 import WhySriLanka from "@/components/WhySriLanka";
 import CustomizeTour from "@/components/CustomizeTour";
@@ -25,15 +26,16 @@ export default function Home() {
             <p className="text-base text-gray-700 text-center max-w-2xl mt-2">
               All-inclusive pricing covers flights, accommodations, meals, and guided tours.
             </p>
-            <a href="#customize" className="mt-4 px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-bold text-lg shadow">
+            <a href="#contact" className="mt-4 px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-bold text-lg shadow">
               Start Customizing
             </a>
           </div>
         </section>
         <WhyChooseUs />
+        <PopularDestinations />
         <Testimonials />
         <WhySriLanka />
-        <CustomizeTour />
+        {/* <CustomizeTour /> */}
         <HowItWorks />
         <AboutUs />
         <ContactUs />

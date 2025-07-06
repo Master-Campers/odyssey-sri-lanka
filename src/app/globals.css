@@ -22,5 +22,139 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Tailwind component classes for scalable design system */
+
+.btn-primary {
+  @apply px-6 py-2 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-bold transition;
+}
+
+.btn-secondary {
+  @apply px-6 py-2 bg-white text-gray-900 border border-gray-900 rounded-full font-bold transition hover:bg-gray-100;
+}
+
+.heading-xl {
+  @apply text-3xl sm:text-5xl font-bold text-gray-900 text-center;
+}
+
+.heading-lg {
+  @apply text-2xl sm:text-3xl font-bold text-gray-900 text-center;
+}
+
+.label {
+  @apply text-left font-semibold text-gray-900;
+}
+
+.input {
+  @apply rounded-full border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-500 bg-white w-full;
+}
+
+.textarea {
+  @apply rounded-2xl border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-500 bg-white min-h-[80px] w-full;
+}
+
+.card {
+  @apply rounded-2xl bg-white shadow p-6 flex flex-col items-center text-center;
+}
+
+.card-lg {
+  @apply rounded-2xl bg-white shadow p-8 flex flex-col items-center text-center;
+}
+
+.text-muted {
+  @apply text-gray-700 text-sm;
+}
+
+.checkbox {
+  @apply accent-green-600 w-5 h-5 rounded border border-gray-300 focus:ring-2 focus:ring-green-500;
+}
+
+.input-hidden {
+  @apply hidden;
+}
+
+.date-picker {
+  @apply w-full max-w-xs;
+}
+
+.icon-feature {
+  @apply text-gray-900 text-3xl mb-2;
+}
+
+.icon-feature-sm {
+  @apply text-gray-900 text-2xl mb-2;
+}
+
+.card-title {
+  @apply font-bold text-lg mb-1 text-gray-900;
+}
+
+.card-title-sm {
+  @apply font-bold text-base mb-1 text-gray-900;
+}
+
+.img-destination {
+  @apply object-cover rounded-2xl;
+}
+
+.footer-nav {
+  @apply flex flex-wrap gap-4 text-sm text-gray-900 justify-center items-center w-full;
+}
+
+.footer-link {
+  @apply hover:underline;
+}
+
+.footer-social {
+  @apply flex gap-4 mt-2 justify-center;
+}
+
+.footer-social-link {
+  @apply hover:underline text-xl text-gray-900;
+}
+
+.footer-social-img {
+  @apply w-6 h-6;
+}
+
+.about-text {
+  @apply text-gray-800 text-base sm:text-lg max-w-2xl mx-auto;
+}
+
+.about-stats {
+  @apply flex flex-col sm:flex-row gap-6 justify-center items-center mt-4;
+}
+
+.about-stat {
+  @apply flex flex-col items-center;
+}
+
+.about-stat-number {
+  @apply text-3xl font-bold text-green-700;
+}
+
+.about-team-avatars {
+  @apply flex gap-4 mb-2;
+}
+
+.about-team-avatar {
+  @apply w-16 h-16 rounded-full bg-gray-300;
+}
+
+.how-steps {
+  @apply flex flex-col md:flex-row items-center justify-center gap-6;
+}
+
+.how-step {
+  @apply flex flex-col items-center;
+}
+
+.how-step-title {
+  @apply font-bold mt-2 text-gray-900;
+}
+
+.how-arrow {
+  @apply hidden md:block text-2xl text-gray-400;
 }

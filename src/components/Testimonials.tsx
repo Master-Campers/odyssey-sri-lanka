@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 
 const TESTIMONIALS = [
     {
@@ -21,6 +21,29 @@ export default function Testimonials() {
     const [animating, setAnimating] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const [nextIndex, setNextIndex] = useState<number | null>(null);
+    const [minHeight, setMinHeight] = useState<number | undefined>(undefined);
+    const measureRefs = useRef<(HTMLDivElement | null)[]>([]);
+    // Swipe state
+    const touchStartX = useRef<number | null>(null);
+    const touchEndX = useRef<number | null>(null);
+
+    useLayoutEffect(() => {
+        // Measure all testimonials and set minHeight
+        const heights = measureRefs.current.map(ref => ref?.offsetHeight || 0);
+        const max = Math.max(...heights, 0);
+        setMinHeight(max);
+    }, []);
+
+    useEffect(() => {
+        // Re-measure on window resize
+        const handleResize = () => {
+            const heights = measureRefs.current.map(ref => ref?.offsetHeight || 0);
+            const max = Math.max(...heights, 0);
+            setMinHeight(max);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         timeoutRef.current = setTimeout(() => {
@@ -46,18 +69,38 @@ export default function Testimonials() {
         }, 400);
     };
 
-    // Helper to get slide positions
     const getSlideClass = (type: "current" | "next") => {
         if (!slideDir) return "translate-x-0 opacity-100";
         if (type === "current") {
             if (slideDir === "right") return animating ? "animate-slide-out-left" : "translate-x-0 opacity-100";
             if (slideDir === "left") return animating ? "animate-slide-out-right" : "translate-x-0 opacity-100";
         } else {
-            // next
             if (slideDir === "right") return animating ? "animate-slide-in-right" : "translate-x-full opacity-0";
             if (slideDir === "left") return animating ? "animate-slide-in-left" : "-translate-x-full opacity-0";
         }
         return "translate-x-0 opacity-100";
+    };
+
+    // Swipe handlers
+    const onTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+    const onTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.touches[0].clientX;
+    };
+    const onTouchEnd = () => {
+        if (touchStartX.current !== null && touchEndX.current !== null) {
+            const diff = touchStartX.current - touchEndX.current;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    handleSlide(1, "right"); // swipe left, next
+                } else {
+                    handleSlide(-1, "left"); // swipe right, prev
+                }
+            }
+        }
+        touchStartX.current = null;
+        touchEndX.current = null;
     };
 
     return (
@@ -65,9 +108,27 @@ export default function Testimonials() {
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">
                 What Our Travelers Say
             </h2>
-            <div className="rounded-2xl bg-white shadow p-8 flex flex-col items-center text-center relative min-h-[160px] overflow-hidden">
+            <div
+                className="rounded-2xl bg-white shadow p-8 flex flex-col items-center text-center relative min-h-[160px] overflow-hidden"
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+            >
+                {/* Hidden testimonials for measuring height */}
+                <div className="absolute w-full opacity-0 pointer-events-none -z-10" aria-hidden="true">
+                    {TESTIMONIALS.map((t, i) => (
+                        <div
+                            key={i}
+                            ref={el => { measureRefs.current[i] = el; }}
+                            className="p-4"
+                        >
+                            <p className="italic text-lg mb-2">“ {t.text} ”</p>
+                            <span className="font-bold">{t.author}</span>
+                        </div>
+                    ))}
+                </div>
                 {/* Slides container */}
-                <div className="relative w-full h-full min-h-[80px]" style={{ minHeight: 100 }}>
+                <div className="relative w-full h-full min-h-[80px] flex items-center justify-center" style={{ minHeight }}>
                     {/* Current testimonial */}
                     <div
                         className={`absolute w-full top-0 left-0 transition-all duration-400 ease-in-out ${getSlideClass("current")}`}

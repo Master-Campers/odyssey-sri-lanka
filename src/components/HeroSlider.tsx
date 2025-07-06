@@ -2,11 +2,11 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const HERO_IMAGES = [
-    { src: "/image-1.jpg", alt: "Sri Lanka Beach" },
-    { src: "/image-2.jpg", alt: "Sri Lanka Temple" },
-    { src: "/image-3.jpg", alt: "Sri Lanka Wildlife" },
-    { src: "/image-4.jpg", alt: "Sri Lanka Tea Plantation" },
+const HERO_IMAGES: { src: string; alt: string; objectPosition?: string }[] = [
+    { src: "/image-1.jpg", alt: "Sri Lanka Beach", objectPosition: "75% 40%" },
+    { src: "/image-2.jpg", alt: "Sri Lanka Temple", objectPosition: "center" },
+    { src: "/image-3.jpg", alt: "Sri Lanka Wildlife", objectPosition: "center" },
+    { src: "/image-4.jpg", alt: "Sri Lanka Tea Plantation", objectPosition: "center" },
 ];
 
 export default function HeroSlider() {
@@ -14,6 +14,9 @@ export default function HeroSlider() {
     const [fade, setFade] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const [showNav, setShowNav] = useState(false);
+    // Swipe state
+    const touchStartX = useRef<number | null>(null);
+    const touchEndX = useRef<number | null>(null);
 
     useEffect(() => {
         timeoutRef.current = setTimeout(() => {
@@ -22,7 +25,7 @@ export default function HeroSlider() {
                 setIndex((i) => (i + 1) % HERO_IMAGES.length);
                 setFade(false);
             }, 600);
-        }, 10000);
+        }, 20000); //* Change image every 20 seconds. 1000ms = 1 second
         return () => {
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
         };
@@ -36,17 +39,43 @@ export default function HeroSlider() {
         }, 600);
     };
 
+    // Swipe handlers
+    const onTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.touches[0].clientX;
+    };
+    const onTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.touches[0].clientX;
+    };
+    const onTouchEnd = () => {
+        if (touchStartX.current !== null && touchEndX.current !== null) {
+            const diff = touchStartX.current - touchEndX.current;
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    goTo(1); // swipe left, next
+                } else {
+                    goTo(-1); // swipe right, prev
+                }
+            }
+        }
+        touchStartX.current = null;
+        touchEndX.current = null;
+    };
+
     return (
         <div
             className="relative rounded-2xl overflow-hidden w-full h-[480px] sm:h-[600px] flex items-center justify-center bg-gray-200 group"
             onMouseEnter={() => setShowNav(true)}
             onMouseLeave={() => setShowNav(false)}
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
         >
             <Image
                 src={HERO_IMAGES[index].src}
                 alt={HERO_IMAGES[index].alt}
                 fill
                 className={`object-cover ${fade ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}
+                style={{ objectPosition: HERO_IMAGES[index].objectPosition }}
                 priority
                 quality={100}
                 sizes="(min-width: 1024px) 1200px, 100vw"
