@@ -22,10 +22,16 @@ export default function CustomizeTour() {
             {/* Interactive form/quiz placeholder */}
             <div className="card-lg mt-4">
                 <span className="font-bold text-lg mb-2 text-gray-900">Customize Your Tour</span>
-                <form className="flex flex-col gap-3 w-full max-w-md">
-                    <input className="input" placeholder="Your interests (e.g. beaches, culture)" />
-                    <input className="input" placeholder="Duration (days)" />
-                    <input className="input" placeholder="Budget (USD)" />
+                <form
+                    name="customize-tour"
+                    method="POST"
+                    data-netlify="true"
+                    className="flex flex-col gap-3 w-full max-w-md"
+                >
+                    <input type="hidden" name="form-name" value="customize-tour" />
+                    <input className="input" placeholder="Your interests (e.g. beaches, culture)" name="interests" />
+                    <input className="input" placeholder="Duration (days)" name="duration" />
+                    <input className="input" placeholder="Budget (USD)" name="budget" />
                     <button className="btn-primary mt-2">Start Planning</button>
                 </form>
             </div>
