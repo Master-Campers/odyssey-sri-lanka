@@ -4,7 +4,6 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import PopularDestinations from "@/components/PopularDestinations";
 import Testimonials from "@/components/Testimonials";
 import WhySriLanka from "@/components/WhySriLanka";
-import CustomizeTour from "@/components/CustomizeTour";
 import HowItWorks from "@/components/HowItWorks";
 import AboutUs from "@/components/AboutUs";
 import ContactUs from "@/components/ContactUs";
@@ -35,7 +34,6 @@ export default function Home() {
         <PopularDestinations />
         <Testimonials />
         <WhySriLanka />
-        {/* <CustomizeTour /> */}
         <HowItWorks />
         <AboutUs />
         <ContactUs />
