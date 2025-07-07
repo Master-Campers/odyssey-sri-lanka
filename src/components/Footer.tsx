@@ -7,9 +7,6 @@ export default function Footer() {
                 Plan Your Custom Sri Lankan Adventure Today
             </h3>
             <nav className="footer-nav">
-                <a href="#customize" className="footer-link">
-                    Customize Your Tour
-                </a>
                 <a href="#why-sri-lanka" className="footer-link">
                     Why Sri Lanka
                 </a>
@@ -77,27 +74,7 @@ export default function Footer() {
                         className="footer-social-img"
                     />
                 </a>
-                <a
-                    href="mailto:info@odysseysrilanka.com"
-                    className="footer-social-link"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    <Image
-                        src="/002-email.png"
-                        alt="Email"
-                        width={24}
-                        height={24}
-                        className="footer-social-img"
-                    />
-                </a>
             </div>
-            <a
-                href="#customize"
-                className="btn-primary mt-2 text-lg shadow inline-block"
-            >
-                Start Planning
-            </a>
             <hr className="w-full border-gray-300 my-4" />
             <span className="text-xs text-gray-500 mt-2 block">
                 &copy; {new Date().getFullYear()} Odyssey Sri Lanka. All rights

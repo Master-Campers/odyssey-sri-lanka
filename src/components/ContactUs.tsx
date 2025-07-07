@@ -1,17 +1,6 @@
-import { useState } from "react";
-import { DateRange } from "react-date-range";
-import "react-date-range/dist/styles.css";
-import "react-date-range/dist/theme/default.css";
+import React from "react";
 
 export default function ContactUs() {
-    const [range, setRange] = useState([
-        {
-            startDate: new Date(),
-            endDate: new Date(),
-            key: "selection",
-        },
-    ]);
-
     return (
         <section id="contact" className="flex flex-col gap-8">
             <h2 className="heading-lg">Get in Touch</h2>
@@ -40,7 +29,6 @@ export default function ContactUs() {
                     data-netlify="true"
                     className="flex flex-col gap-4 w-full"
                 >
-                    {/* Netlify hidden input */}
                     <input type="hidden" name="form-name" value="custom-contact" className="input-hidden" />
                     <div className="flex flex-col sm:flex-row gap-4 w-full">
                         <input name="name" required className="input flex-1" placeholder="Your name" />
@@ -63,36 +51,7 @@ export default function ContactUs() {
                     <div className="flex flex-col gap-2 w-full">
                         <label className="label">Budget (USD)</label>
                         <div className="flex gap-2 w-full">
-                            {/* <select name="currency" className="rounded-full border border-gray-300 px-2 py-2 text-gray-900 bg-white">
-                                <option value="usd">USD</option>
-                                <option value="eur">EUR</option>
-                                <option value="gbp">GBP</option>
-                            </select> */}
                             <input name="budget" type="number" min="0" step="100" className="input flex-1" placeholder="Your budget (USD)" />
-                        </div>
-                    </div>
-                    <div className="flex flex-col gap-2 w-full">
-                        <label className="label">Preferred Travel Dates</label>
-                        <div className="flex flex-col items-center w-full date-picker">
-                            <DateRange
-                                editableDateInputs={true}
-                                onChange={item => {
-                                    const selection = item.selection;
-                                    setRange([{
-                                        startDate: selection.startDate ?? new Date(),
-                                        endDate: selection.endDate ?? new Date(),
-                                        key: selection.key ?? "selection",
-                                    }]);
-                                }}
-                                moveRangeOnFirstSelection={false}
-                                ranges={range}
-                                rangeColors={["#16a34a"]}
-                                className="rounded-xl shadow w-full max-w-xs"
-                                minDate={new Date()}
-                            />
-                            {/* Hidden fields for Netlify to collect start/end dates */}
-                            <input type="hidden" name="start_date" value={range[0].startDate.toISOString().split("T")[0]} className="input-hidden" />
-                            <input type="hidden" name="end_date" value={range[0].endDate.toISOString().split("T")[0]} className="input-hidden" />
                         </div>
                     </div>
                     <button type="submit" className="btn-primary w-full sm:w-auto mt-2">Send Message</button>
