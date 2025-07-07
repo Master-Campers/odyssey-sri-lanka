@@ -14,7 +14,7 @@ export default function ContactUs() {
     const formRef = useRef<HTMLFormElement>(null);
     const [submitted, setSubmitted] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = () => {
         // Let the form submit to FormBold, but reset fields after submit
         setTimeout(() => {
             if (formRef.current) {
