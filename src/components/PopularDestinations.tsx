@@ -3,32 +3,32 @@ import Image from "next/image";
 const destinations = [
     {
         name: "Sigiriya Rock Fortress",
-        image: "/images/destinations/sigiriya.jpg",
+        image: "/destinations/sigiriya.jpeg",
         description: "Climb the iconic Lion Rock and discover ancient frescoes, gardens, and breathtaking views.",
     },
     {
         name: "Ella & Nine Arches Bridge",
-        image: "/images/destinations/ella.jpg",
+        image: "/destinations/ella.jpeg",
         description: "Experience lush tea country, scenic train rides, and the famous Nine Arches Bridge.",
     },
     {
         name: "Galle Fort",
-        image: "/images/destinations/galle.jpg",
+        image: "/destinations/galle.jpeg",
         description: "Wander the UNESCO-listed Dutch fort, vibrant streets, and oceanfront ramparts.",
     },
     {
         name: "Yala National Park",
-        image: "/images/destinations/yala.jpg",
+        image: "/destinations/yala.jpeg",
         description: "Go on safari to spot leopards, elephants, and diverse wildlife in Sri Lanka's top park.",
     },
     {
         name: "Kandy & Temple of the Tooth",
-        image: "/images/destinations/kandy.jpg",
+        image: "/destinations/kandy.jpeg",
         description: "Visit the sacred Temple of the Tooth and enjoy the cultural capital's lakeside charm.",
     },
     {
         name: "Mirissa Beach",
-        image: "/images/destinations/mirissa.jpg",
+        image: "/destinations/mirissa.jpeg",
         description: "Relax on golden sands, surf, or go whale watching in this laid-back beach town.",
     },
 ];

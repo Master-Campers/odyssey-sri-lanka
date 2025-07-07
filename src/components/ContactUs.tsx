@@ -15,7 +15,7 @@ export default function ContactUs() {
     return (
         <section id="contact" className="flex flex-col gap-8">
             <h2 className="heading-lg">Get in Touch</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="card flex flex-col items-stretch">
                     <span className="text-gray-900 text-3xl mb-2 self-stretch">{/* <-- full width */}📧</span>
                     <h3 className="font-bold text-lg mb-1 text-gray-900">Reach Out</h3>
