@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Footer() {
     return (
         <footer className="w-full flex flex-col items-center gap-2 mt-10 pt-6 border-t border-gray-200 text-center">
@@ -25,9 +27,11 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img
+                    <Image
                         src="/001-whatsapp.png"
                         alt="WhatsApp"
+                        width={24}
+                        height={24}
                         className="footer-social-img"
                     />
                 </a>
@@ -37,9 +41,11 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img
+                    <Image
                         src="/007-facebook-1.png"
                         alt="Facebook"
+                        width={24}
+                        height={24}
                         className="footer-social-img"
                     />
                 </a>
@@ -49,9 +55,11 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img
+                    <Image
                         src="/tripadvisor-icon.png"
                         alt="TripAdvisor"
+                        width={24}
+                        height={24}
                         className="footer-social-img"
                     />
                 </a>
@@ -61,9 +69,11 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img
+                    <Image
                         src="/004-instagram.png"
                         alt="Instagram"
+                        width={24}
+                        height={24}
                         className="footer-social-img"
                     />
                 </a>
@@ -73,9 +83,11 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    <img
+                    <Image
                         src="/002-email.png"
                         alt="Email"
+                        width={24}
+                        height={24}
                         className="footer-social-img"
                     />
                 </a>

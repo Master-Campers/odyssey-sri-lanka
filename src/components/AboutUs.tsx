@@ -4,7 +4,7 @@ export default function AboutUs() {
             <h2 className="heading-lg">About Our Sri Lanka Adventures</h2>
             <div className="card-lg gap-4">
                 <p className="about-text">
-                    Odyssey Sri Lanka was founded in 2012 by a group of passionate locals who wanted to share the magic of their homeland with the world. Over the years, we've grown from a small team to one of Sri Lanka's most trusted custom travel specialists. Our mission is to deliver unforgettable, all-inclusive journeys that celebrate the island's beauty, culture, and hospitality. We believe in sustainable, community-focused tourism and are proud to have helped thousands of travelers experience Sri Lanka in a truly personal way.
+                    {"Odyssey Sri Lanka was founded in 2012 by a group of passionate locals who wanted to share the magic of their homeland with the world. Over the years, we've grown from a small team to one of Sri Lanka's most trusted custom travel specialists. Our mission is to deliver unforgettable, all-inclusive journeys that celebrate the island's beauty, culture, and hospitality. We believe in sustainable, community-focused tourism and are proud to have helped thousands of travelers experience Sri Lanka in a truly personal way."}
                 </p>
                 <div className="about-stats">
                     <div className="about-stat">
@@ -45,7 +45,7 @@ export default function AboutUs() {
                     <div className="about-team-avatar" />
                     <div className="about-team-avatar" />
                 </div>
-                <p className="text-muted">We’re a team of passionate locals dedicated to making your Sri Lanka adventure unforgettable.</p>
+                <p className="text-muted">We&apos;re a team of passionate locals dedicated to making your Sri Lanka adventure unforgettable.</p>
             </div>
         </section>
     );
