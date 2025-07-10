@@ -1,60 +1,102 @@
+import Image from "next/image";
+
+const whyChooseUs = [
+    {
+        icon: (
+            <Image
+                src="/Icons/map-location-pin-svgrepo-com.svg"
+                alt="All-Inclusive Convenience"
+                width={32}
+                height={32}
+                className="inline w-15 h-15"
+                priority
+            />
+        ),
+        title: `All-Inclusive Convenience`,
+        description: `Enjoy complete peace of mind from the moment you arrive. Our all-inclusive packages cover airport pickup, attraction visits, entrance tickets, safaris, boat trips, and almost all meals—leaving you free to relax and savor every moment.`
+    },
+    {
+        icon: <Image
+            src="/Icons/user-expert-svgrepo-com.svg"
+            alt="Expert Local Guides"
+            width={32}
+            height={32}
+            className="inline w-15 h-15"
+            priority
+        />,
+        title: `Expert Local Guides`,
+        description: `Travel with confidence alongside expert chauffeur-guides and specialist local experts. Our handpicked team ensures insightful, respectful, and authentic experiences—whether exploring ancient ruins or embarking on wildlife safaris.`
+    },
+    {
+        icon: <Image
+            src="/Icons/note-edit-svgrepo-com.svg"
+            alt="Fully Customizable Itineraries"
+            width={32}
+            height={32}
+            className="inline w-15 h-15"
+            priority
+        />,
+        title: `Fully Customizable Itineraries`,
+        description: `Every traveler is unique. We design fully personalized itineraries to match your preferences, style, and budget. From family adventures to romantic getaways, your perfect Sri Lankan holiday is crafted just for you.`
+    },
+    {
+        icon: <Image
+            src="/Icons/handshake-fill-svgrepo-com.svg"
+            alt="Our Promise"
+            width={32}
+            height={32}
+            className="inline w-15 h-15"
+            priority
+        />,
+        title: `Our Promise`,
+        description: `We are dedicated to providing you with the best Sri Lankan holiday experience possible. We ensure that every detail of your journey exceeds your expectations, so you return home with unforgettable memories and stories you’ll be eager to share with everyone you know.`
+    },
+    {
+        icon: <Image
+            src="/Icons/star-sharp-svgrepo-com.svg"
+            alt="What Sets Us Apart"
+            width={32}
+            height={32}
+            className="inline w-15 h-15"
+            priority
+        />,
+        title: `What Sets Us Apart`,
+        description: `We’re not just planners—we’re explorers. Our team personally experiences and selects accommodations, activities, and hidden gems across Sri Lanka, ensuring every detail is exceptional and tailored to you.`
+    },
+];
+/*{
+    icon: <Image
+        src="/Icons/man-outline-svgrepo-com.svg"
+        alt="Meet Our Team"
+        width={32}
+        height={32}
+        className="inline w-15 h-15"
+        priority
+    />,
+    title: `Meet Our Team`,
+    description: `Our passionate, locally based team brings you authentic insight and genuine care. We travel with our guests, turning every journey into a personalized adventure and ensuring your Sri Lankan holiday is truly extraordinary.`
+}*/
+
 export default function WhyChooseUs() {
     return (
         <section id="why-us" className="flex flex-col gap-6">
             <h2 className="heading-lg">Why Travel with Us?</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="card">
-                    <span className="icon-feature">💼</span>
-                    <h3 className="card-title">All-Inclusive Convenience</h3>
-                    <p className="text-muted">
-                        One price covers flights, accommodations, meals, transport, and guided tours
-                    </p>
-                </div>
-                <div className="card">
-                    <span className="icon-feature">🧑‍🦱</span>
-                    <h3 className="card-title">Expert Local Guides</h3>
-                    <p className="text-muted">
-                        Authentic experiences with knowledgeable Sri Lankan guides
-                    </p>
-                </div>
-                <div className="card">
-                    <span className="icon-feature">🛠️</span>
-                    <h3 className="card-title">Fully Customizable Itineraries</h3>
-                    <p className="text-muted">
-                        Crafted to your unique preferences, from adventure to relaxation
-                    </p>
-                </div>
-                <div className="card">
-                    <span className="icon-feature">🌱</span>
-                    <h3 className="card-title">Sustainable Travel</h3>
-                    <p className="text-muted">
-                        Eco-friendly practices supporting local communities
-                    </p>
-                </div>
-            </div>
-            {/* Expanded breakdown section */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <div className="card">
-                    <span className="icon-feature-sm">🤝</span>
-                    <h4 className="card-title-sm">Our Promise</h4>
-                    <p className="text-muted">
-                        Personalized support from planning to return, with 24/7 local assistance and transparent pricing.
-                    </p>
-                </div>
-                <div className="card">
-                    <span className="icon-feature-sm">⭐</span>
-                    <h4 className="card-title-sm">What Sets Us Apart</h4>
-                    <p className="text-muted">
-                        Handpicked experiences, boutique stays, and exclusive access to hidden gems across Sri Lanka.
-                    </p>
-                </div>
-                <div className="card">
-                    <span className="icon-feature-sm">🧑‍💼</span>
-                    <h4 className="card-title-sm">Meet Our Team</h4>
-                    <p className="text-muted">
-                        A passionate team of travel experts and local hosts dedicated to making your journey unforgettable.
-                    </p>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-auto gap-6">
+                {whyChooseUs.map((item, idx) => {
+                    // Center the last item if it's alone in the last row
+                    const isLast = idx === whyChooseUs.length - 1;
+                    const isOdd = whyChooseUs.length % 2 !== 0;
+                    return (
+                        <div
+                            className={`card${isLast && isOdd ? " sm:col-span-2 sm:justify-center" : ""}`}
+                            key={item.title}
+                        >
+                            <span className="icon-feature">{item.icon}</span>
+                            <h3 className="card-title">{item.title}</h3>
+                            <p className="text-muted">{item.description}</p>
+                        </div>
+                    );
+                })}
             </div>
         </section>
     );

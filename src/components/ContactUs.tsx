@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import { DateRange } from "react-date-range";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
+import Image from "next/image";
+import { Link } from "react-scroll";
 
 export default function ContactUs() {
     const [range, setRange] = useState([
@@ -42,22 +44,33 @@ export default function ContactUs() {
     return (
         <section id="contact" className="flex flex-col gap-8">
             <h2 className="heading-lg">Get in Touch</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="card flex flex-col items-stretch">
-                    <span className="text-gray-900 text-3xl mb-2 self-stretch">📧</span>
-                    <h3 className="font-bold text-lg mb-1 text-gray-900">Reach Out</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="card-lg flex flex-col items-stretch">
+                    <Image
+                        src="/Icons/mail-open-minus-svgrepo-com.svg"
+                        alt="Visit Us Icon"
+                        width={32}
+                        height={32}
+                        className="icon-feature w-15 h-15"
+                    />
+                    <h3 className="font-bold heading-md mb-1 text-gray-900">Reach Out</h3>
                     <p className="text-muted">Email, phone, and live chat options</p>
                 </div>
-                <div className="card flex flex-col items-stretch">
-                    <span className="text-gray-900 text-3xl mb-2 self-stretch">🌐</span>
-                    <h3 className="font-bold text-lg mb-1 text-gray-900">Follow Us</h3>
+                <Link
+                    to="footer"
+                    spy={true}
+                    className="card-lg flex flex-col items-stretch cursor-pointer focus:outline-none focus:ring-2 focus:ring-green-600"
+                >
+                    <Image
+                        src="/Icons/hashtag-svgrepo-com.svg"
+                        alt="Visit Us Icon"
+                        width={32}
+                        height={32}
+                        className="icon-feature w-15 h-15"
+                    />
+                    <h3 className="font-bold heading-md mb-1 text-gray-900">Follow Us</h3>
                     <p className="text-muted">Instagram, Facebook, X</p>
-                </div>
-                <div className="card flex flex-col items-stretch">
-                    <span className="text-gray-900 text-3xl mb-2 self-stretch">🏢</span>
-                    <h3 className="font-bold text-lg mb-1 text-gray-900">Visit Us</h3>
-                    <p className="text-muted">Office address (if applicable)</p>
-                </div>
+                </Link>
             </div>
             <div className="card-lg mt-4 gap-6 w-full max-w-2xl mx-auto">
                 <span className="font-bold text-xl mb-2 text-gray-900">Contact & Custom Tour Form</span>
@@ -154,7 +167,7 @@ export default function ContactUs() {
                             />
                         </div>
                     </div>
-                    <button type="submit" className="btn-primary w-full sm:w-auto mt-4">Send Message</button>
+                    <button type="submit" className="btn-primary btn-floating w-full sm:w-auto mt-4">Send Message</button>
                 </form>
             </div>
         </section>

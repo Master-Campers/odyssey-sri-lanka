@@ -11,31 +11,32 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#d3d2c7] flex flex-col items-center justify-center py-6 px-2">
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50 via-white to-yellow-100 flex flex-col items-center justify-center py-6 px-2">
       <div className="w-full max-w-6xl rounded-3xl bg-white/90 shadow-xl p-6 sm:p-10 flex flex-col gap-10">
         <section id="hero" className="flex flex-col gap-8">
           <HeroSlider />
-          <div className="flex flex-col items-center gap-2">
-            <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 text-center">
-              Your Personalized Sri Lanka Vacation Awaits
+          <div className="flex flex-col items-center gap-2 bg-white rounded-2xl shadow-lg p-6 border border-gray-200">
+            <h1 className="text-4xl sm:text-6xl font-extrabold text-gray-900 text-center drop-shadow-lg tracking-tight">
+              Discover Your Dream Sri Lanka Holiday
             </h1>
-            <p className="text-lg sm:text-2xl text-gray-800 text-center">
+            <p className="text-xl sm:text-2xl text-gray-800 text-center font-semibold mt-2">
               All-Inclusive Travel Tailored to You, No Hidden Costs
             </p>
             <p className="text-base text-gray-700 text-center max-w-2xl mt-2">
-              All-inclusive pricing covers flights, accommodations, meals, and guided tours.
+              {"Experience the magic of Sri Lanka with Odyssey Sri Lanka and Master Campers Lanka. Our expertly crafted holiday packages promise stress-free travel, immersive adventures, and local expertise at every step. Whether you seek all-inclusive ease, knowledgeable guides, or a tailor-made journey, we guarantee a truly unforgettable Sri Lankan escape."}
             </p>
-            <a href="#contact" className="mt-4 px-8 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-full font-bold text-lg shadow">
+            <a href="#contact" className="mt-4 px-8 py-3 bg-gray-900 hover:bg-gray-800 active:bg-gray-700 text-white rounded-full font-bold text-lg shadow-lg transition-all duration-200 btn-floating">
               Start Customizing
             </a>
+            <hr className="w-full border-gray-200 my-6 opacity-50" />
           </div>
         </section>
         <WhyChooseUs />
         <PopularDestinations />
-        <Testimonials />
         <WhySriLanka />
-        <HowItWorks />
         <AboutUs />
+        <Testimonials />
+        <HowItWorks />
         <ContactUs />
         <Footer />
       </div>

@@ -109,7 +109,7 @@ export default function Testimonials() {
                 What Our Travelers Say
             </h2>
             <div
-                className="rounded-2xl bg-white shadow p-8 flex flex-col items-center text-center relative min-h-[160px] overflow-hidden"
+                className="card-lg relative min-h-[160px] overflow-hidden"
                 onTouchStart={onTouchStart}
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}

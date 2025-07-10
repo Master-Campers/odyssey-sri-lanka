@@ -63,23 +63,25 @@ export default function HeroSlider() {
 
     return (
         <div
-            className="relative rounded-2xl overflow-hidden w-full h-[480px] sm:h-[600px] flex items-center justify-center bg-gray-200 group"
+            className="relative rounded-2xl overflow-hidden w-full h-[480px] sm:h-[600px] flex items-center justify-center bg-gray-100 group shadow-lg border border-gray-200"
             onMouseEnter={() => setShowNav(true)}
             onMouseLeave={() => setShowNav(false)}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
         >
-            <Image
-                src={HERO_IMAGES[index].src}
-                alt={HERO_IMAGES[index].alt}
-                fill
-                className={`object-cover ${fade ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}
-                style={{ objectPosition: HERO_IMAGES[index].objectPosition }}
-                priority
-                quality={100}
-                sizes="(min-width: 1024px) 1200px, 100vw"
-            />
+            <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                    src={HERO_IMAGES[index].src}
+                    alt={HERO_IMAGES[index].alt}
+                    fill
+                    className={`object-cover border-4 border-white rounded-2xl shadow-xl ${fade ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}
+                    style={{ objectPosition: HERO_IMAGES[index].objectPosition }}
+                    priority
+                    quality={100}
+                    sizes="(min-width: 1024px) 1200px, 100vw"
+                />
+            </div>
             {/* Nav Buttons */}
             <button
                 className={`absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-2xl rounded-full p-2 shadow transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}

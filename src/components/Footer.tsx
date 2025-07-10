@@ -1,25 +1,35 @@
 import Image from "next/image";
+import { Link } from "react-scroll";
 
 export default function Footer() {
     return (
-        <footer className="w-full flex flex-col items-center gap-2 mt-10 pt-6 border-t border-gray-200 text-center">
+        <footer id="footer" className="w-full flex flex-col items-center gap-2 mt-10 pt-6 border-t border-gray-200 text-center">
             <h3 className="heading-lg">
                 Plan Your Custom Sri Lankan Adventure Today
             </h3>
             <nav className="footer-nav">
-                <a href="#why-sri-lanka" className="footer-link">
+                <Link
+                    to="why-sri-lanka"
+                    duration={500}
+                    className="footer-link">
                     Why Sri Lanka
-                </a>
-                <a href="#about" className="footer-link">
+                </Link>
+                <Link
+                    to="about"
+                    duration={500}
+                    className="footer-link">
                     About
-                </a>
-                <a href="#contact" className="footer-link">
+                </Link>
+                <Link
+                    to="contact"
+                    duration={500}
+                    className="footer-link">
                     Contact
-                </a>
+                </Link>
             </nav>
             <div className="footer-social">
-                <a
-                    href="https://wa.me/+94777129683"
+                <Link
+                    to="https://wa.me/+94777129683"
                     className="footer-social-link"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -31,9 +41,9 @@ export default function Footer() {
                         height={24}
                         className="footer-social-img"
                     />
-                </a>
-                <a
-                    href="https://www.facebook.com/share/1AmvCtJ6p3/?mibextid=wwXIfr"
+                </Link>
+                <Link
+                    to="https://www.facebook.com/share/1AmvCtJ6p3/?mibextid=wwXIfr"
                     className="footer-social-link"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -45,9 +55,9 @@ export default function Footer() {
                         height={24}
                         className="footer-social-img"
                     />
-                </a>
-                <a
-                    href="#"
+                </Link>
+                <Link
+                    to="#"
                     className="footer-social-link flex items-center"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -59,9 +69,9 @@ export default function Footer() {
                         height={24}
                         className="footer-social-img"
                     />
-                </a>
-                <a
-                    href="https://www.instagram.com/odyssey_srilanka?igsh=OHBwYzdqMHFwbW9n"
+                </Link>
+                <Link
+                    to="https://www.instagram.com/odyssey_srilanka?igsh=OHBwYzdqMHFwbW9n"
                     className="footer-social-link"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -73,7 +83,7 @@ export default function Footer() {
                         height={24}
                         className="footer-social-img"
                     />
-                </a>
+                </Link>
             </div>
             <hr className="w-full border-gray-300 my-4" />
             <span className="text-xs text-gray-500 mt-2 block">
