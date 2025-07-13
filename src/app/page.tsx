@@ -1,9 +1,9 @@
 "use client";
+import Image from "next/image";
 import HeroSlider from "@/components/HeroSlider";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import PopularDestinations from "@/components/PopularDestinations";
 import Testimonials from "@/components/Testimonials";
-import WhySriLanka from "@/components/WhySriLanka";
 import HowItWorks from "@/components/HowItWorks";
 import AboutUs from "@/components/AboutUs";
 import ContactUs from "@/components/ContactUs";
@@ -15,7 +15,7 @@ export default function Home() {
       <div className="w-full max-w-6xl rounded-3xl bg-white/90 shadow-xl p-6 sm:p-10 flex flex-col gap-10">
         <header className="sticky top-0 z-50 bg-black shadow-lg backdrop-blur flex items-center justify-between px-6 py-3 border-b border-yellow-600 rounded-xl">
           <div className="flex items-center gap-3 rounded-xl px-3 py-2">
-            <img src="/Logo/odyssey-logo.jpeg" alt="Odyssey Sri Lanka Logo" className="h-10 w-10 rounded-full object-cover border-2 border-yellow-500" />
+            <Image src="/Logo/odyssey-logo.jpeg" alt="Odyssey Sri Lanka Logo" width={40} height={40} className="h-10 w-10 rounded-full object-cover border-2 border-yellow-500" priority />
             <span className="font-extrabold text-xl text-yellow-500 tracking-wide drop-shadow">Odyssey Sri Lanka</span>
           </div>
           <nav className="flex gap-6 text-lg font-semibold">
@@ -46,7 +46,6 @@ export default function Home() {
         </section>
         <WhyChooseUs />
         <PopularDestinations />
-
         <AboutUs />
         <Testimonials />
         <HowItWorks />

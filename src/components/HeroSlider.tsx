@@ -19,30 +19,6 @@ export default function HeroSlider() {
     const touchStartX = useRef<number | null>(null);
     const touchEndX = useRef<number | null>(null);
 
-    // Autoplay logic
-    useEffect(() => {
-        if (!isPlaying) return;
-        timeoutRef.current = setTimeout(() => {
-            handleNext();
-        }, 6000); // 6s per slide
-        return () => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        };
-    }, [index, isPlaying]);
-
-    // Keyboard navigation
-    useEffect(() => {
-        const handleKey = (e: KeyboardEvent) => {
-            if (e.key === "ArrowLeft") handlePrev();
-            if (e.key === "ArrowRight") handleNext();
-        };
-        window.addEventListener("keydown", handleKey);
-        return () => window.removeEventListener("keydown", handleKey);
-    });
-
-    // Pause on hover/touch
-    const handleMouseEnter = () => setIsPlaying(false);
-    const handleMouseLeave = () => setIsPlaying(true);
 
     // Slide transition logic
     const handleNext = useCallback(() => {
@@ -60,6 +36,31 @@ export default function HeroSlider() {
             setTransitioning(false);
         }, 500);
     }, []);
+
+    // Autoplay logic
+    useEffect(() => {
+        if (!isPlaying) return;
+        timeoutRef.current = setTimeout(() => {
+            handleNext();
+        }, 6000); // 6s per slide
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, [index, isPlaying, handleNext]);
+
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === "ArrowLeft") handlePrev();
+            if (e.key === "ArrowRight") handleNext();
+        };
+        window.addEventListener("keydown", handleKey);
+        return () => window.removeEventListener("keydown", handleKey);
+    });
+
+    // Pause on hover/touch
+    const handleMouseEnter = () => setIsPlaying(false);
+    const handleMouseLeave = () => setIsPlaying(true);
 
     // Swipe handlers
     const onTouchStart = (e: React.TouchEvent) => {
