@@ -1,6 +1,7 @@
 "use client";
+
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 
 const HERO_IMAGES: { src: string; alt: string; objectPosition?: string }[] = [
     { src: "/image-1.jpg", alt: "Sri Lanka Beach", objectPosition: "75% 40%" },
@@ -11,33 +12,54 @@ const HERO_IMAGES: { src: string; alt: string; objectPosition?: string }[] = [
 
 export default function HeroSlider() {
     const [index, setIndex] = useState(0);
-    const [fade, setFade] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
+    const [transitioning, setTransitioning] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const [showNav, setShowNav] = useState(false);
-    // Swipe state
+    const sliderRef = useRef<HTMLDivElement>(null);
     const touchStartX = useRef<number | null>(null);
     const touchEndX = useRef<number | null>(null);
 
+    // Autoplay logic
     useEffect(() => {
+        if (!isPlaying) return;
         timeoutRef.current = setTimeout(() => {
-            setFade(true);
-            setTimeout(() => {
-                setIndex((i) => (i + 1) % HERO_IMAGES.length);
-                setFade(false);
-            }, 600);
-        }, 20000); //* Change image every 20 seconds. 1000ms = 1 second
+            handleNext();
+        }, 6000); // 6s per slide
         return () => {
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
         };
-    }, [index]);
+    }, [index, isPlaying]);
 
-    const goTo = (dir: number) => {
-        setFade(true);
+    // Keyboard navigation
+    useEffect(() => {
+        const handleKey = (e: KeyboardEvent) => {
+            if (e.key === "ArrowLeft") handlePrev();
+            if (e.key === "ArrowRight") handleNext();
+        };
+        window.addEventListener("keydown", handleKey);
+        return () => window.removeEventListener("keydown", handleKey);
+    });
+
+    // Pause on hover/touch
+    const handleMouseEnter = () => setIsPlaying(false);
+    const handleMouseLeave = () => setIsPlaying(true);
+
+    // Slide transition logic
+    const handleNext = useCallback(() => {
+        setTransitioning(true);
         setTimeout(() => {
-            setIndex((i) => (i + dir + HERO_IMAGES.length) % HERO_IMAGES.length);
-            setFade(false);
-        }, 600);
-    };
+            setIndex((i) => (i + 1) % HERO_IMAGES.length);
+            setTransitioning(false);
+        }, 500);
+    }, []);
+
+    const handlePrev = useCallback(() => {
+        setTransitioning(true);
+        setTimeout(() => {
+            setIndex((i) => (i - 1 + HERO_IMAGES.length) % HERO_IMAGES.length);
+            setTransitioning(false);
+        }, 500);
+    }, []);
 
     // Swipe handlers
     const onTouchStart = (e: React.TouchEvent) => {
@@ -50,59 +72,82 @@ export default function HeroSlider() {
         if (touchStartX.current !== null && touchEndX.current !== null) {
             const diff = touchStartX.current - touchEndX.current;
             if (Math.abs(diff) > 50) {
-                if (diff > 0) {
-                    goTo(1); // swipe left, next
-                } else {
-                    goTo(-1); // swipe right, prev
-                }
+                if (diff > 0) handleNext();
+                else handlePrev();
             }
         }
         touchStartX.current = null;
         touchEndX.current = null;
     };
 
+    // Dot navigation
+    const goToSlide = (i: number) => {
+        if (i === index) return;
+        setTransitioning(true);
+        setTimeout(() => {
+            setIndex(i);
+            setTransitioning(false);
+        }, 500);
+    };
+
     return (
         <div
-            className="relative rounded-2xl overflow-hidden w-full h-[480px] sm:h-[600px] flex items-center justify-center bg-gray-100 group shadow-lg border border-gray-200"
-            onMouseEnter={() => setShowNav(true)}
-            onMouseLeave={() => setShowNav(false)}
+            ref={sliderRef}
+            className="relative rounded-2xl overflow-hidden w-full h-[480px] sm:h-[600px] flex items-center justify-center bg-gray-100 shadow-lg border border-gray-200"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
+            tabIndex={0}
+            aria-label="Sri Lanka highlights image slider"
+            role="region"
         >
-            <div className="relative w-full h-full flex items-center justify-center">
-                <Image
-                    src={HERO_IMAGES[index].src}
-                    alt={HERO_IMAGES[index].alt}
-                    fill
-                    className={`object-cover border-4 border-white rounded-2xl shadow-xl ${fade ? "transition-opacity duration-700 opacity-0" : "opacity-100"}`}
-                    style={{ objectPosition: HERO_IMAGES[index].objectPosition }}
-                    priority
-                    quality={100}
-                    sizes="(min-width: 1024px) 1200px, 100vw"
-                />
+            {/* Slide Images */}
+            <div className="absolute inset-0 w-full h-full">
+                {HERO_IMAGES.map((img, i) => (
+                    <Image
+                        key={img.src}
+                        src={img.src}
+                        alt={img.alt}
+                        fill
+                        className={`object-cover border-4 border-white rounded-2xl shadow-xl transition-all duration-700 ${i === index ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0"} ${transitioning ? "blur-sm" : ""}`}
+                        style={{ objectPosition: img.objectPosition }}
+                        priority={i === index}
+                        quality={100}
+                        sizes="(min-width: 1024px) 1200px, 100vw"
+                    />
+                ))}
             </div>
             {/* Nav Buttons */}
             <button
-                className={`absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-2xl rounded-full p-2 shadow transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
-                onClick={() => goTo(-1)}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-yellow-100 rounded-full p-2 shadow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600 z-20 flex items-center justify-center"
+                onClick={handlePrev}
                 aria-label="Previous image"
             >
-                ‹
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="14" cy="14" r="14" fill="none" />
+                    <path d="M17 8L11 14L17 20" stroke="#eab308" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
             </button>
             <button
-                className={`absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-2xl rounded-full p-2 shadow transition-opacity duration-500 ${showNav ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
-                onClick={() => goTo(1)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-yellow-100 rounded-full p-2 shadow transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-600 z-20 flex items-center justify-center"
+                onClick={handleNext}
                 aria-label="Next image"
             >
-                ›
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="14" cy="14" r="14" fill="none" />
+                    <path d="M11 8L17 14L11 20" stroke="#eab308" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
             </button>
             {/* Dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-4 z-20">
                 {HERO_IMAGES.map((_, i) => (
-                    <span
+                    <button
                         key={i}
-                        className={`w-2 h-2 rounded-full ${i === index ? "bg-green-600" : "bg-white/60"}`}
+                        className={`w-4 h-4 rounded-full border-4 border-yellow-600 transition-all duration-300 focus:outline-none shadow-lg ${i === index ? "bg-yellow-600 scale-110" : "bg-white/90 hover:bg-yellow-200"}`}
+                        aria-label={`Go to slide ${i + 1}`}
+                        onClick={() => goToSlide(i)}
                     />
                 ))}
             </div>

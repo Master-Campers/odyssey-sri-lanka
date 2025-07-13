@@ -4,7 +4,7 @@ const whyChooseUs = [
     {
         icon: (
             <Image
-                src="/Icons/map-location-pin-svgrepo-com.svg"
+                src="/Icons/white-map-location-pin-svgrepo-com.svg"
                 alt="All-Inclusive Convenience"
                 width={32}
                 height={32}
@@ -17,11 +17,11 @@ const whyChooseUs = [
     },
     {
         icon: <Image
-            src="/Icons/user-expert-svgrepo-com.svg"
+            src="/Icons/white-user-expert-svgrepo-com.svg"
             alt="Expert Local Guides"
             width={32}
             height={32}
-            className="inline w-15 h-15"
+            className="inline w-14 h-14"
             priority
         />,
         title: `Expert Local Guides`,
@@ -29,7 +29,7 @@ const whyChooseUs = [
     },
     {
         icon: <Image
-            src="/Icons/note-edit-svgrepo-com.svg"
+            src="/Icons/white-note-edit-svgrepo-com.svg"
             alt="Fully Customizable Itineraries"
             width={32}
             height={32}
@@ -41,11 +41,11 @@ const whyChooseUs = [
     },
     {
         icon: <Image
-            src="/Icons/handshake-fill-svgrepo-com.svg"
+            src="/Icons/white-handshake-fill-svgrepo-com.svg"
             alt="Our Promise"
             width={32}
             height={32}
-            className="inline w-15 h-15"
+            className="inline w-16 h-16"
             priority
         />,
         title: `Our Promise`,
@@ -53,7 +53,7 @@ const whyChooseUs = [
     },
     {
         icon: <Image
-            src="/Icons/star-sharp-svgrepo-com.svg"
+            src="/Icons/white-star-sharp-svgrepo-com.svg"
             alt="What Sets Us Apart"
             width={32}
             height={32}
@@ -79,21 +79,21 @@ const whyChooseUs = [
 
 export default function WhyChooseUs() {
     return (
-        <section id="why-us" className="flex flex-col gap-6">
-            <h2 className="heading-lg">Why Travel with Us?</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-auto gap-6">
+        <section id="why-us" className="flex flex-col gap-8 py-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-yellow-500 text-center mb-4 drop-shadow-lg">Why Travel with Us?</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-auto gap-8">
                 {whyChooseUs.map((item, idx) => {
                     // Center the last item if it's alone in the last row
                     const isLast = idx === whyChooseUs.length - 1;
                     const isOdd = whyChooseUs.length % 2 !== 0;
                     return (
                         <div
-                            className={`card${isLast && isOdd ? " sm:col-span-2 sm:justify-center" : ""}`}
+                            className={`bg-black rounded-xl p-8 flex flex-col items-center text-center shadow-lg${isLast && isOdd ? " sm:col-span-2 sm:justify-center" : ""}`}
                             key={item.title}
                         >
-                            <span className="icon-feature">{item.icon}</span>
-                            <h3 className="card-title">{item.title}</h3>
-                            <p className="text-muted">{item.description}</p>
+                            <span className="icon-feature mb-4">{item.icon}</span>
+                            <h3 className="font-bold text-xl text-yellow-500 mb-2">{item.title}</h3>
+                            <p className="text-yellow-500 text-base leading-relaxed">{item.description}</p>
                         </div>
                     );
                 })}

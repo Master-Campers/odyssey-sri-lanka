@@ -12,7 +12,7 @@ export default function HowItWorks() {
                 <div className="how-step">
                     <span className="icon-feature">🗺️</span>
                     <span className="how-step-title">Step 2</span>
-                    <span className="text-muted text-center">Craft Your Itinerary</span>
+                    <span className="text-muted text-center">We Craft Your Itinerary</span>
                 </div>
                 <span className="how-arrow">→</span>
                 <div className="how-step">
