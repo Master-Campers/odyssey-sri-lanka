@@ -94,6 +94,16 @@ export default function ContactUs() {
                         placeholder="Your email (required)"
                         aria-label="Email"
                     />
+                    <div className="flex flex-col gap-2 w-full">
+                        <textarea
+                            id="message"
+                            name="message"
+                            className="textarea border-2 border-[#c7a34b] rounded-lg p-2 text-black focus:border-[#c7a34b] focus:ring-2 focus:ring-[#c7a34b]"
+                            placeholder="Type your message here..."
+                            rows={3}
+                            aria-label="Message"
+                        />
+                    </div>
                     <div className="flex flex-col sm:flex-row gap-4 w-full items-center">
                         <input
                             name="name"
