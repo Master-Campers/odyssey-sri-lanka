@@ -80,7 +80,7 @@ const whyChooseUs = [
 export default function WhyChooseUs() {
     return (
         <section id="why-us" className="flex flex-col gap-8 py-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-yellow-500 text-center mb-4 drop-shadow-lg">Why Travel with Us?</h2>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#c7a34b] text-center mb-4 drop-shadow-lg">Why Travel with Us?</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-auto gap-8">
                 {whyChooseUs.map((item, idx) => {
                     // Center the last item if it's alone in the last row
@@ -88,12 +88,12 @@ export default function WhyChooseUs() {
                     const isOdd = whyChooseUs.length % 2 !== 0;
                     return (
                         <div
-                            className={`bg-black rounded-xl p-8 flex flex-col items-center text-center shadow-lg${isLast && isOdd ? " sm:col-span-2 sm:justify-center" : ""}`}
+                            className={`bg-[#252525] rounded-xl p-8 flex flex-col items-center text-center shadow-lg border-4 border-[#c7a34b]${isLast && isOdd ? " sm:col-span-2 sm:justify-center" : ""}`}
                             key={item.title}
                         >
                             <span className="icon-feature mb-4">{item.icon}</span>
-                            <h3 className="font-bold text-xl text-yellow-500 mb-2">{item.title}</h3>
-                            <p className="text-yellow-500 text-base leading-relaxed">{item.description}</p>
+                            <h3 className="font-bold text-xl text-[#c7a34b] mb-2">{item.title}</h3>
+                            <p className="text-[#c7a34b] text-base leading-relaxed">{item.description}</p>
                         </div>
                     );
                 })}

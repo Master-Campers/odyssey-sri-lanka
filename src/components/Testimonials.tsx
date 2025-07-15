@@ -104,12 +104,10 @@ export default function Testimonials() {
     };
 
     return (
-        <section id="testimonials" className="flex flex-col gap-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center">
-                What Our Travelers Say
-            </h2>
+        <section id="testimonials" className="flex flex-col gap-6 py-12">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#c7a34b] text-center mb-4 drop-shadow-lg">What Our Travelers Say</h2>
             <div
-                className="card-lg relative min-h-[160px] overflow-hidden"
+                className="bg-[#252525] rounded-xl p-8 flex flex-col items-center text-center shadow-lg border-4 border-[#c7a34b] relative min-h-[160px] overflow-hidden"
                 onTouchStart={onTouchStart}
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}
@@ -122,8 +120,8 @@ export default function Testimonials() {
                             ref={el => { measureRefs.current[i] = el; }}
                             className="p-4"
                         >
-                            <p className="italic text-lg mb-2">“ {t.text} ”</p>
-                            <span className="font-bold">{t.author}</span>
+                            <p className="italic text-lg mb-2 text-[#c7a34b]">“ {t.text} ”</p>
+                            <span className="font-bold text-[#c7a34b]">{t.author}</span>
                         </div>
                     ))}
                 </div>
@@ -134,10 +132,10 @@ export default function Testimonials() {
                         className={`absolute w-full top-0 left-0 transition-all duration-400 ease-in-out ${getSlideClass("current")}`}
                         key={`current-${index}-${slideDir ?? "none"}`}
                     >
-                        <p className="italic text-gray-800 text-lg mb-2">
+                        <p className="italic text-lg mb-2 text-[#c7a34b]">
                             “ {TESTIMONIALS[index].text} ”
                         </p>
-                        <span className="font-bold text-gray-900">{TESTIMONIALS[index].author}</span>
+                        <span className="font-bold text-[#c7a34b]">{TESTIMONIALS[index].author}</span>
                     </div>
                     {/* Next testimonial (preloaded and animated in) */}
                     {animating && nextIndex !== null && (
@@ -145,16 +143,16 @@ export default function Testimonials() {
                             className={`absolute w-full top-0 left-0 transition-all duration-400 ease-in-out ${getSlideClass("next")}`}
                             key={`next-${nextIndex}-${slideDir}`}
                         >
-                            <p className="italic text-gray-800 text-lg mb-2">
+                            <p className="italic text-lg mb-2 text-[#c7a34b]">
                                 “ {TESTIMONIALS[nextIndex].text} ”
                             </p>
-                            <span className="font-bold text-gray-900">{TESTIMONIALS[nextIndex].author}</span>
+                            <span className="font-bold text-[#c7a34b]">{TESTIMONIALS[nextIndex].author}</span>
                         </div>
                     )}
                 </div>
                 {/* Nav Buttons */}
                 <button
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-2xl rounded-full p-2 shadow"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#c7a34b] hover:bg-black text-black hover:text-[#c7a34b] text-2xl rounded-full p-2 shadow border-2 border-black"
                     onClick={() => handleSlide(-1, "left")}
                     aria-label="Previous testimonial"
                     disabled={animating}
@@ -162,7 +160,7 @@ export default function Testimonials() {
                     ‹
                 </button>
                 <button
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-2xl rounded-full p-2 shadow"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#c7a34b] hover:bg-black text-black hover:text-[#c7a34b] text-2xl rounded-full p-2 shadow border-2 border-black"
                     onClick={() => handleSlide(1, "right")}
                     aria-label="Next testimonial"
                     disabled={animating}
@@ -174,7 +172,7 @@ export default function Testimonials() {
                     {TESTIMONIALS.map((_, i) => (
                         <span
                             key={i}
-                            className={`w-2 h-2 rounded-full ${i === index ? "bg-green-600" : "bg-gray-300"}`}
+                            className={`w-2 h-2 rounded-full ${i === index ? "bg-[#c7a34b]" : "bg-gray-300"}`}
                         />
                     ))}
                 </div>

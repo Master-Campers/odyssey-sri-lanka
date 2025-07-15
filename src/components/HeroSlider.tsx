@@ -4,10 +4,11 @@ import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const HERO_IMAGES: { src: string; alt: string; objectPosition?: string }[] = [
-    { src: "/image-1.jpg", alt: "Sri Lanka Beach", objectPosition: "75% 40%" },
-    { src: "/image-2.jpg", alt: "Sri Lanka Temple", objectPosition: "center" },
-    { src: "/image-3.jpg", alt: "Sri Lanka Wildlife", objectPosition: "center" },
-    { src: "/image-4.jpg", alt: "Sri Lanka Tea Plantation", objectPosition: "center" },
+    { src: "/HeaderImages/header5.jpg", alt: "Sri Lanka Leopard", objectPosition: "center" },
+    { src: "/HeaderImages/header7.jpg", alt: "Sri Lanka Beach", objectPosition: "center" },
+    { src: "/HeaderImages/header4.jpg", alt: "Villa ", objectPosition: "center" },
+    { src: "/HeaderImages/header6.jpg", alt: "Sri Lanka Perehara", objectPosition: "center" },
+    { src: "/HeaderImages/header3.jpg", alt: "Dinner table", objectPosition: "center" },
 ];
 
 export default function HeroSlider() {
@@ -94,7 +95,7 @@ export default function HeroSlider() {
     return (
         <div
             ref={sliderRef}
-            className="relative rounded-2xl overflow-hidden w-full h-[480px] sm:h-[600px] flex items-center justify-center bg-gray-100 shadow-lg border border-gray-200"
+            className="relative rounded-2xl overflow-hidden w-full h-[480px] sm:h-[600px] flex items-center justify-center bg-gray-100 shadow-lg border border-[#c7a34b]"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onTouchStart={onTouchStart}
@@ -112,7 +113,7 @@ export default function HeroSlider() {
                         src={img.src}
                         alt={img.alt}
                         fill
-                        className={`object-cover border-4 border-white rounded-2xl shadow-xl transition-all duration-700 ${i === index ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0"} ${transitioning ? "blur-sm" : ""}`}
+                        className={`object-cover border-4 border-[#c7a34b] rounded-2xl shadow-xl transition-all duration-700 ${i === index ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0"} ${transitioning ? "blur-sm" : ""}`}
                         style={{ objectPosition: img.objectPosition }}
                         priority={i === index}
                         quality={100}
