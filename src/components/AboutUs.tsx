@@ -14,7 +14,7 @@ export default function AboutUs() {
                         className="icon-feature w-15 h-15 mb-4"
                     />
                     <h3 className="font-bold text-xl text-[#c7a34b] mb-2">Our Commitment</h3>
-                    <p className="text-[#c7a34b] text-base leading-relaxed">At Odyssey Sri Lanka, our commitment is to deliver an unparalleled, stress-free holiday experience tailored to your unique desires. From the moment you arrive, we handle every detail curating personalized itineraries, securing expert local guides, and selecting the finest accommodations and experiences. Our dedicated team ensures seamless comfort, authentic adventures, and lasting memories, promising you the ultimate Sri Lanka luxury tour that you’ll rave about for years to come.</p>
+                    <p className="text-[#c7a34b] text-base leading-relaxed">{"At Odyssey Sri Lanka, our commitment is to deliver an unparalleled, stress-free holiday experience tailored to your unique desires. From the moment you arrive, we handle every detail curating personalized itineraries, securing expert local guides, and selecting the finest accommodations and experiences. Our dedicated team ensures seamless comfort, authentic adventures, and lasting memories, promising you the ultimate Sri Lanka luxury tour that you’ll rave about for years to come."}</p>
                 </div>
                 <div className="bg-white rounded-2xl shadow-lg p-8 border-4 border-[#c7a34b] gap-4 flex flex-col items-center text-center">
                     <h2 className="font-extrabold text-2xl text-[#c7a34b] mb-2">Our History</h2>

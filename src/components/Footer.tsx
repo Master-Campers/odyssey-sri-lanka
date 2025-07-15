@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Link } from "react-scroll";
 
 export default function Footer() {
     return (
