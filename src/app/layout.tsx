@@ -81,6 +81,19 @@ export default function RootLayout({
             "description": "All-inclusive, tailor-made holidays, expert local guides, and unforgettable adventures in Sri Lanka."
           })
         }} />
+        {/* Microsoft Clarity */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "sgdceyxcj4");
+            `,
+          }}
+        />
         {/* End Google Tag Manager */}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
