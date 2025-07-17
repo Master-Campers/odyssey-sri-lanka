@@ -59,6 +59,8 @@ export default function RootLayout({
         <meta name="author" content="Odyssey Sri Lanka" />
         <link rel="icon" href="/Logo/odyssey-logo.jpeg" type="image/x-icon" />
         <link rel="apple-touch-icon" href="/Logo/odyssey-logo.jpeg" />
+        <link rel="canonical" href="https://odysseysrilanka.com/" />
+
         {/* Google Tag Manager */}
         <script dangerouslySetInnerHTML={{
           __html: `
@@ -68,6 +70,17 @@ export default function RootLayout({
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-KGPV268T');
         ` }} />
+        {/* Structured Data: schema.org TravelAgency */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "TravelAgency",
+            "name": "Odyssey Sri Lanka",
+            "url": "https://odysseysrilanka.com",
+            "logo": "https://odysseysrilanka.com/Logo/odyssey-logo.jpeg",
+            "description": "All-inclusive, tailor-made holidays, expert local guides, and unforgettable adventures in Sri Lanka."
+          })
+        }} />
         {/* End Google Tag Manager */}
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

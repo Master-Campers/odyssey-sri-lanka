@@ -1,11 +1,4 @@
 /* Ensure readable form and body text */
-.body {
-  font-size: 1rem;
-  color: #171717;
-  text-align: center;
-  max-width: 32rem;
-  margin-top: 0.5rem;
-}
 
 .label {
   text-align: left;
@@ -107,18 +100,6 @@ body {
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.10), 0 1px 2px 0 rgba(0, 0, 0, 0.08);
 }
 
-.heading-xl {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #171717;
-  text-align: center;
-}
-
-@media (min-width: 640px) {
-  .heading-xl {
-    font-size: 3rem;
-  }
-}
 
 .heading-lg {
   font-size: 2rem;
@@ -183,10 +164,6 @@ body {
   text-align: center;
 }
 
-.text-muted {
-  color: #374151;
-  font-size: 0.95rem;
-}
 
 .checkbox {
   accent-color: #16a34a;
@@ -196,14 +173,7 @@ body {
   border: 1px solid #d1d5db;
 }
 
-.input-hidden {
-  display: none;
-}
 
-.date-picker {
-  width: 100%;
-  max-width: 20rem;
-}
 
 .icon-feature {
   color: #171717;
@@ -211,11 +181,6 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.icon-feature-sm {
-  color: #171717;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
-}
 
 .card-title {
   font-weight: bold;
@@ -277,97 +242,15 @@ body {
   height: 1.5rem;
 }
 
-.about-text {
-  color: #374151;
-  font-size: 1rem;
-  max-width: 32rem;
-  margin-left: auto;
-  margin-right: auto;
-}
 
-@media (min-width: 640px) {
-  .about-text {
-    font-size: 1.125rem;
-  }
-}
 
-.about-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-}
 
-@media (min-width: 640px) {
-  .about-stats {
-    flex-direction: row;
-  }
-}
 
-.about-stat {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.about-stat-number {
-  font-size: 1.875rem;
-  font-weight: bold;
-  color: #15803d;
-}
 
-.about-team-avatars {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
 
-.about-team-avatar {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 9999px;
-  background: #d1d5db;
-}
 
-.how-steps {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-}
 
-@media (min-width: 768px) {
-  .how-steps {
-    flex-direction: row;
-  }
-}
-
-.how-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.how-step-title {
-  font-weight: bold;
-  margin-top: 0.5rem;
-  color: #171717;
-}
-
-.how-arrow {
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .how-arrow {
-    display: block;
-    font-size: 1.25rem;
-    color: #9ca3af;
-  }
-}
 
 html {
   scroll-behavior: smooth;

@@ -4,8 +4,8 @@ import Image from "next/image";
 import { useEffect, useRef, useState, useCallback } from "react";
 
 const HERO_IMAGES: { src: string; alt: string; objectPosition?: string }[] = [
-    { src: "/HeaderImages/header5.jpg", alt: "Sri Lanka Leopard", objectPosition: "center" },
-    { src: "/HeaderImages/header7.jpg", alt: "Sri Lanka Beach", objectPosition: "center" },
+    { src: "/HeaderImages/header5.jpg", alt: "Sri Lanka Leopard", objectPosition: "30%" },
+    { src: "/HeaderImages/header7.jpg", alt: "Sri Lanka Beach", objectPosition: "40%" },
     { src: "/HeaderImages/header4.jpg", alt: "Villa ", objectPosition: "center" },
     { src: "/HeaderImages/header6.jpg", alt: "Sri Lanka Perehara", objectPosition: "center" },
     { src: "/HeaderImages/header3.jpg", alt: "Dinner table", objectPosition: "center" },
