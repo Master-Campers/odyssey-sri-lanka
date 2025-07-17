@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   title: "Odyssey Sri Lanka | Custom Sri Lanka Holidays & Tours",
   description: "Experience the best of Sri Lanka with Odyssey Sri Lanka. All-inclusive, tailor-made holidays, expert local guides, and unforgettable adventures.",
   icons: {
-    icon: "/Logo/odyssey-logo.jpeg",
-    shortcut: "/Logo/odyssey-logo.jpeg",
-    apple: "/Logo/odyssey-logo.jpeg"
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico"
   },
   openGraph: {
     title: "Odyssey Sri Lanka | Custom Sri Lanka Holidays & Tours",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Odyssey Sri Lanka",
     images: [
       {
-        url: "/Logo/odyssey-logo.jpeg",
+        url: "/favicon.ico",
         width: 1200,
         height: 630,
         alt: "Odyssey Sri Lanka Logo"
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Odyssey Sri Lanka | Custom Sri Lanka Holidays & Tours",
     description: "Experience the best of Sri Lanka with Odyssey Sri Lanka. All-inclusive, tailor-made holidays, expert local guides, and unforgettable adventures.",
-    images: ["/Logo/odyssey-logo.jpeg"]
+    images: ["/favicon.ico"]
   }
 };
 
@@ -57,8 +57,8 @@ export default function RootLayout({
         <meta name="theme-color" content="#000" />
         <meta name="keywords" content="Sri Lanka, Holidays, Tours, Custom, Odyssey, Travel, Safari, Beach, Adventure, Luxury, Odyssey Sri Lanka" />
         <meta name="author" content="Odyssey Sri Lanka" />
-        <link rel="icon" href="/Logo/odyssey-logo.jpeg" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="/Logo/odyssey-logo.jpeg" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="/" />
         <link rel="canonical" href="https://odysseysrilanka.com/" />
 
         {/* Google Tag Manager */}
@@ -77,7 +77,7 @@ export default function RootLayout({
             "@type": "TravelAgency",
             "name": "Odyssey Sri Lanka",
             "url": "https://odysseysrilanka.com",
-            "logo": "https://odysseysrilanka.com/Logo/odyssey-logo.jpeg",
+            "logo": "https://odysseysrilanka.com/favicon.ico",
             "description": "All-inclusive, tailor-made holidays, expert local guides, and unforgettable adventures in Sri Lanka."
           })
         }} />

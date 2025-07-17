@@ -16,7 +16,7 @@ export default function Home() {
       <div className="w-full max-w-6xl rounded-3xl bg-[#FFFAFA] shadow-xl p-6 sm:p-10 flex flex-col gap-10 border-4 border-[#c7a34b]">
         <header className="sticky top-0 z-50 bg-[#252525] shadow-lg flex items-center justify-between px-6 py-3 border-b-4 border-[#c7a34b] rounded-xl">
           <div className="flex items-center gap-3 rounded-xl px-3 py-2">
-            <Image src="/Logo/odyssey-logo.jpeg" alt="Odyssey Sri Lanka Logo" width={40} height={40} className="h-10 w-10 rounded-full object-cover border-2 border-[#c7a34b]" priority />
+            <Image src="/favicon.ico" alt="Odyssey Sri Lanka Logo" width={40} height={40} className="h-10 w-10 rounded-full object-cover border-2 border-[#c7a34b]" priority />
             <span className="font-extrabold text-xl text-[#c7a34b] tracking-wide drop-shadow">Odyssey Sri Lanka</span>
           </div>
           {/* Hamburger menu for screens below 930px */}
