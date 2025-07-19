@@ -13,13 +13,27 @@ export default function Footer() {
             </nav>
             <div className="footer-social">
                 <a
+                    href="mailto:info@odysseysrilanka.com"
+                    className="footer-social-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Image
+                        src="/Icons/002-email.png"
+                        alt="Email"
+                        width={24}
+                        height={24}
+                        className="footer-social-img"
+                    />
+                </a>
+                <a
                     href="https://wa.me/+94777129683"
                     className="footer-social-link"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     <Image
-                        src="/001-whatsapp.png"
+                        src="/Icons/001-whatsapp.png"
                         alt="WhatsApp"
                         width={24}
                         height={24}
@@ -33,7 +47,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                 >
                     <Image
-                        src="/007-facebook-1.png"
+                        src="/Icons/007-facebook-1.png"
                         alt="Facebook"
                         width={24}
                         height={24}
@@ -47,7 +61,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                 >
                     <Image
-                        src="/tripadvisor-icon.png"
+                        src="/Icons/tripadvisor-icon.png"
                         alt="TripAdvisor"
                         width={24}
                         height={24}
@@ -61,7 +75,7 @@ export default function Footer() {
                     rel="noopener noreferrer"
                 >
                     <Image
-                        src="/004-instagram.png"
+                        src="/Icons/004-instagram.png"
                         alt="Instagram"
                         width={24}
                         height={24}
